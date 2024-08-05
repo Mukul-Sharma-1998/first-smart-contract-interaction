@@ -57,9 +57,16 @@ async function main() {
         wallet);
 
     // await countContract.dec();
-    const count = await countContract.get();    
+    let count = await countContract.get();  
+    console.log("Original value: ",count.toString());  
 
-    console.log(count.toString());
+    await countContract.inc();
+    count = await countContract.get(); 
+    console.log("Incremented value: ",count.toString());
+
+    await countContract.dec();
+    count = await countContract.get(); 
+    console.log("Decremented value: ",count.toString());
 
 
 }
